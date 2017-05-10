@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = ["1","1","8","2","8","5","1"];
+		// 方法一：
+		function norepeat(str){
+			var brr = [];
+			for(var i=0;i<str.length;i++){
+				if(brr.indexOf(str[i]) == -1){
+					brr.push(str[i]);
+				}
+			}
+			return brr;
+		}
+		console.log(norepeat(arr));
+
+		// 方法二：
+		var crr = ["2","4","6","6","8","6","2"];
+		function norepeats(str){
+			for(var i=0;i<str.length;i++){
+				for(var j=i+1;j<str.length;j++){
+					if(str[i]==str[j]){
+						var brr = str.splice(j,1);
+					}
+				}
+			}
+			return str;
+		}
+		console.log(norepeats(crr));
+	</script>
+</body>
+</html>
