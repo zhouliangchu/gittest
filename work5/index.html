@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <style>
+        .box{
+            width: 260px;
+            height: 100px;
+            margin: 50px auto;
+        }
+        .count{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body ng-app="Myapp">
+    <div class="box" ng-controller="gwc">
+        <div class="count">
+            <button class="add" ng-click="addfn()">+</button>
+            <input type="text" value="1" ng-model="num" ng-bind="num">
+            <button class="del" ng-click="delfn()">-</button>
+        </div>
+        <div class="total">
+            <span>合计：</span>
+            <span class="num" ng-bind="num">1</span>
+            <span>个</span>
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+    <script>
+        var app = angular.module('Myapp',[]);
+
+        app.controller('gwc', function($scope){
+            $scope.num = 1;
+            $scope.addfn = function(){
+                $scope.num++
+            }
+            $scope.delfn = function(){
+                $scope.num--;
+                if($scope.num < 1){
+                    $scope.num = 1;
+                    alert('请至少选择1个');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
